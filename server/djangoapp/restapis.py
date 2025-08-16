@@ -8,7 +8,7 @@ load_dotenv()
 backend_url = os.getenv(
     'backend_url', default="http://localhost:3030")
 sentiment_analyzer_url = os.getenv(
-    'https://sentianalyzer.1z38f6e1jeo8.us-south.codeengine.appdomain.cloud/',
+    'sentiment_analyzer_url',
     default="http://localhost:5050/")
 
 # def get_request(endpoint, **kwargs):
