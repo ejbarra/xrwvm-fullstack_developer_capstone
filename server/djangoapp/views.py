@@ -1,12 +1,8 @@
 # Uncomment the required imports before adding the code
-
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import redirect
 from django.contrib.auth import logout
-from django.contrib import messages
-from datetime import datetime
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 import logging
@@ -37,6 +33,7 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
+
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request) # Terminate user session
@@ -47,7 +44,6 @@ def logout_request(request):
 @csrf_exempt
 def registration(request):
     context = {}
-
     # Load JSON data from the request body
     data = json.loads(request.body)
     username = data['userName']
@@ -64,7 +60,6 @@ def registration(request):
     except:
         # If not, simply log this is a new user
         logger.debug("{} is new user".format(username))
-
     # If it is a new user
     if not username_exist:
         # Create user in auth_user table
